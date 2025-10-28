@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ticket Booking</title>
+    <link rel="stylesheet" href="/static/booking.css">
+</head>
+<body>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-message flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="form-container">
+        <h2>✈ Flight Ticket Booking</h2>
+
+        <form method="POST">
+            <input type="text" name="passenger_name" placeholder="Enter Passenger Name" required>
+            <input type="number" name="Age" placeholder="Enter Age" required>
+            <input type="text" name="Gender" placeholder="Gender" required>
+            <input type="text" name="Flight_number" placeholder="Enter Flight Number" required>
+
+            <!-- Airways -->
+            <select name="Airways" required>
+                <option value="" disabled selected>Select Airways</option>
+
+                <optgroup label="India">
+                    <option value="Air India">Air India</option>
+                    <option value="IndiGo">IndiGo</option>
+                    <option value="Vistara">Vistara</option>
+                    <option value="SpiceJet">SpiceJet</option>
+                    <option value="AirAsia India">AirAsia India</option>
+                    <option value="Go First">Go First</option>
+                </optgroup>
+
+                <optgroup label="International">
+                    <option value="Emirates">Emirates</option>
+                    <option value="Qatar Airways">Qatar Airways</option>
+                    <option value="Singapore Airlines">Singapore Airlines</option>
+                    <option value="Etihad Airways">Etihad Airways</option>
+                    <option value="Lufthansa">Lufthansa</option>
+                    <option value="British Airways">British Airways</option>
+                    <option value="Air France">Air France</option>
+                    <option value="Turkish Airlines">Turkish Airlines</option>
+                </optgroup>
+            </select>
+
+            <!-- Departure -->
+            <select name="Departure" required>
+                <option value="" disabled selected>Select Departure Airport</option>
+
+                <optgroup label="India">
+                    <option value="MAA - Chennai International Airport">Chennai (MAA)</option>
+                    <option value="BLR - Kempegowda International Airport">Bangalore (BLR)</option>
+                    <option value="HYD - Rajiv Gandhi International Airport">Hyderabad (HYD)</option>
+                    <option value="BOM - Chhatrapati Shivaji International Airport">Mumbai (BOM)</option>
+                    <option value="DEL - Indira Gandhi International Airport">Delhi (DEL)</option>
+                    <option value="CCU - Netaji Subhas Chandra Bose International Airport">Kolkata (CCU)</option>
+                    <option value="COK - Cochin International Airport">Kochi (COK)</option>
+                    <option value="GOX - Manohar International Airport Goa">Goa (GOX)</option>
+                </optgroup>
+
+                <optgroup label="International">
+                    <option value="DXB - Dubai International Airport">Dubai (DXB)</option>
+                    <option value="SIN - Changi International Airport">Singapore (SIN)</option>
+                    <option value="LHR - Heathrow Airport">London (LHR)</option>
+                    <option value="CDG - Charles de Gaulle Airport">Paris (CDG)</option>
+                    <option value="FRA - Frankfurt Airport">Frankfurt (FRA)</option>
+                    <option value="SYD - Sydney Airport">Sydney (SYD)</option>
+                    <option value="YYZ - Toronto Pearson Airport">Toronto (YYZ)</option>
+                    <option value="DOH - Hamad International Airport">Doha (DOH)</option>
+                    <option value="RUH - King Khalid International Airport">Riyadh (RUH)</option>
+                </optgroup>
+            </select>
+
+            <!-- Destination -->
+            <select name="Destination" required>
+                <option value="" disabled selected>Select Destination Airport</option>
+
+                <optgroup label="India">
+                    <option value="MAA - Chennai International Airport">Chennai (MAA)</option>
+                    <option value="BLR - Kempegowda International Airport">Bangalore (BLR)</option>
+                    <option value="HYD - Rajiv Gandhi International Airport">Hyderabad (HYD)</option>
+                    <option value="BOM - Chhatrapati Shivaji International Airport">Mumbai (BOM)</option>
+                    <option value="DEL - Indira Gandhi International Airport">Delhi (DEL)</option>
+                    <option value="CCU - Netaji Subhas Chandra Bose International Airport">Kolkata (CCU)</option>
+                    <option value="COK - Cochin International Airport">Kochi (COK)</option>
+                    <option value="GOX - Manohar International Airport Goa">Goa (GOX)</option>
+                </optgroup>
+
+                <optgroup label="International">
+                    <option value="DXB - Dubai International Airport">Dubai (DXB)</option>
+                    <option value="SIN - Changi International Airport">Singapore (SIN)</option>
+                    <option value="LHR - Heathrow Airport">London (LHR)</option>
+                    <option value="CDG - Charles de Gaulle Airport">Paris (CDG)</option>
+                    <option value="FRA - Frankfurt Airport">Frankfurt (FRA)</option>
+                    <option value="SYD - Sydney Airport">Sydney (SYD)</option>
+                    <option value="YYZ - Toronto Pearson Airport">Toronto (YYZ)</option>
+                    <option value="DOH - Hamad International Airport">Doha (DOH)</option>
+                    <option value="RUH - King Khalid International Airport">Riyadh (RUH)</option>
+                </optgroup>
+            </select>
+
+            <input type="text" name="Departure_time" placeholder="Departure Time" required>
+
+            <button type="submit">✅ Save Booking</button>
+        </form>
+
+        <a href="{{url_for('dashboard')}}" class="back-btn">⬅ Back to Dashboard</a>
+    </div>
+
+</body>
+</html>

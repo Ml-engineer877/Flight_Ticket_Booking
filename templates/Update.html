@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Updating Ticket</title>
+    <link rel="stylesheet" href="/static/update.css">
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<div class="form-container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-message flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <h2>✈ Update Flight Ticket</h2>
+
+    <form method="POST">
+        <input type="text" name="passenger_name" placeholder="Passenger Name" required>
+        <input type="number" name="Age" placeholder="Age" required>
+
+        <select name="Gender" required>
+            <option value="" disabled selected>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <input type="text" name="Flight_number" placeholder="Flight Number" required>
+
+        <select name="Airways" required>
+            <option value="" disabled selected>Select Airways</option>
+
+            <optgroup label="India">
+                <option value="Air India">Air India</option>
+                <option value="IndiGo">IndiGo</option>
+                <option value="Vistara">Vistara</option>
+                <option value="SpiceJet">SpiceJet</option>
+                <option value="AirAsia India">AirAsia India</option>
+                <option value="Go First">Go First</option>
+            </optgroup>
+
+            <optgroup label="International">
+                <option value="Emirates">Emirates</option>
+                <option value="Qatar Airways">Qatar Airways</option>
+                <option value="Singapore Airlines">Singapore Airlines</option>
+                <option value="Etihad Airways">Etihad Airways</option>
+                <option value="Lufthansa">Lufthansa</option>
+                <option value="British Airways">British Airways</option>
+                <option value="Air France">Air France</option>
+                <option value="Turkish Airlines">Turkish Airlines</option>
+            </optgroup>
+        </select>
+
+        <select name="Departure" required>
+            <option value="" disabled selected>Select Departure Airport</option>
+            <optgroup label="India">
+                <option>Chennai (MAA)</option>
+                <option>Bangalore (BLR)</option>
+                <option>Hyderabad (HYD)</option>
+                <option>Mumbai (BOM)</option>
+                <option>Delhi (DEL)</option>
+                <option>Kolkata (CCU)</option>
+                <option>Kochi (COK)</option>
+                <option>Goa (GOX)</option>
+            </optgroup>
+        </select>
+
+        <select name="Destination" required>
+            <option value="" disabled selected>Select Destination Airport</option>
+            <optgroup label="International">
+                <option>Dubai (DXB)</option>
+                <option>Singapore (SIN)</option>
+                <option>London (LHR)</option>
+                <option>Paris (CDG)</option>
+                <option>Frankfurt (FRA)</option>
+                <option>Sydney (SYD)</option>
+                <option>Toronto (YYZ)</option>
+                <option>Doha (DOH)</option>
+                <option>Riyadh (RUH)</option>
+            </optgroup>
+        </select>
+
+        <input type="text" name="Departure_time" placeholder="Departure Time" required>
+
+        <button type="submit" class="btn-update">Update Ticket</button>
+    </form>
+
+    <a href="{{url_for('dashboard')}}" class="back-btn">← Back to Dashboard</a>
+</div>
+
+</body>
+</html>

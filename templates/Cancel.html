@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel Ticket</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://images.pexels.com/photos/261120/pexels-photo-261120.jpeg?auto=compress') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cancel-box {
+            background: rgba(255,255,255,0.9);
+            padding: 50px;
+            border-radius: 12px;
+            width: 350px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cancel-box h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #d9534f;
+        }
+
+        .cancel-box input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #aaa;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .cancel-box1{
+            width: 107%;
+            padding: 15px;
+            padding-right: 10px;
+            background: #d9534f;
+            border: none;
+            color: rgb(255, 254, 254);
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 12px;
+            text-decoration: none;
+            color: #0f0f0f;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .flash-message {
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .flash-success { background: #d4edda; color: #155724; }
+        .flash-danger { background: #f8d7da; color: #721c24; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }  
+    </style>
+
+</head>
+<body>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+    <form class="cancel-box" method="POST">
+        <h2>Cancel Ticket</h2>
+
+        <input type="text" name="passenger_name" placeholder="Enter Passenger Name" required>
+
+        <input type="text" name="Flight_number" placeholder="Enter Flight Number" required>
+
+        <button type="submit" class="cancel-box1">Calcel Ticket</button>
+        <a href="{{url_for('dashboard')}}" class="back-btn">⬅ Back to Dashboard</a>
+    </form>
+
+</body>
+</html>

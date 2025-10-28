@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard | Flight Booking</title>
+    <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <h2>✈ Flight Ticket Booking</h2>
+        <a href="/logout" class="logout-btn">Logout</a>
+    </nav>
+
+    <section class="hero">
+        <div class="dashboard-box">
+            <h3>Welcome to Dashboard</h3>
+            <p>Select an action below</p>
+
+            <div class="btn-container">
+                <a href="{{ url_for('Booking') }}" class="action-btn">➕ Add New Booking</a>
+                <a href="{{ url_for('Update') }}" class="action-btn">✏️ Update Tickets</a>
+                <a href="{{ url_for('cancel_ticket') }}" class="action-btn">❌ Cancel Ticket</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

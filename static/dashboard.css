@@ -1,0 +1,83 @@
+/* Background Image */
+body {
+    background: url("https://images.pexels.com/photos/912050/pexels-photo-912050.jpeg?auto=compress&cs=tinysrgb&w=1600") no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Top Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.6);
+    padding: 15px 50px;
+    color: white;
+}
+
+.logout-btn {
+    background: #f44336;
+    padding: 10px 18px;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.logout-btn:hover {
+    background: #cc3329;
+}
+
+/* Center section */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+}
+
+/* Glass card */
+.dashboard-box {
+    background: rgba(255,255,255,0.18);
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    text-align: center;
+    backdrop-filter: blur(8px);
+    color: white;
+}
+
+.dashboard-box h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.dashboard-box p {
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+/* Buttons */
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.action-btn {
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    background: rgba(0,0,0,0.6);
+    transition: 0.3s;
+}
+
+.action-btn:hover {
+    background: #007bff;
+    transform: scale(1.05);
+}
