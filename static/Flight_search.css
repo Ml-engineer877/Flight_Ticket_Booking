@@ -1,0 +1,104 @@
+/* Background */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    background: url("https://images.pexels.com/photos/358319/pexels-photo-358319.jpeg?auto=compress&cs=tinysrgb&w=1600") no-repeat center center/cover;
+    color: #090909;
+}
+
+/* Search Container */
+.search-container {
+    width: 450px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 25px;
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Heading */
+.search-container h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Form Labels */
+label {
+    font-weight: 500;
+    display: block;
+    margin-top: 15px;
+}
+
+/* Select Fields */
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+/* Search Button */
+.search-btn {
+    width: 100%;
+    margin-top: 20px;
+    background: #00b4d8;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #141414;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.search-btn:hover {
+    background: #0088a9;
+}
+
+/* Back Button */
+.back-btn {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #030303d7;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.back-btn:hover {
+    color: #00b4d8;
+}
+
+/* ======== Result Table ======== */
+.flights-table {
+    width: 90%;
+    margin: 35px auto;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Table Head */
+.flights-table th {
+    background: #00b4d8;
+    padding: 12px;
+    color: #080808;
+    font-size: 15px;
+}
+
+/* Table Body */
+.flights-table td {
+    padding: 12px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.15);
+    font-size: 14px;
+}
+
+/* Row hover effect */
+.flights-table tr:hover td {
+    background: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+}

@@ -11,12 +11,11 @@ def db_connection():
         password="4fa3a72d1a689a79dfe9186e8d5685f86b1845a4",
         database="Flight_Ticket_App_universeup",
         port=3307,
-        autocommit=True 
-    )
+        autocommit=True)
 
 @app.route('/')
 def home():
-    return render_template("dashboard.html")
+    return render_template("login.html")
 
 @app.route('/register', methods=['GET','POST'])
 def register():
@@ -78,24 +77,46 @@ def dashboard():
         return redirect(url_for('login'))
     return render_template("dashboard.html")
 
+@app.route('/flight_search',methods=['GET','POST'])
+def flight_search():
+    return render_template('Flight_search.html')
+
+@app.route('/flight_results',methods=['GET','POST'])
+def flight_results():
+    flights=None
+    if request.method=='POST':
+        Departure=request.form['Departure']
+        Destination=request.form['Destination']
+        mydb=db_connection()
+        cursor=mydb.cursor(dictionary=True)
+        cursor.execute("select Airways, Flight_number, Departure, Destination, Departure_time, Price from Flight_Details where Departure=%s and Destination=%s",(Departure,Destination))
+        flights=cursor.fetchall()
+        cursor.close()
+        mydb.close()
+    return render_template('Flight_result.html',flights=flights)
+
 @app.route('/Booking',methods=['GET','POSt'])
 def Booking():
     if request.method=='POST':
         passenger_name=request.form['passenger_name']
         Age=request.form['Age']
         Gender=request.form['Gender']
-        Airways=request.form['Airways']
-        Flight_number=request.form['Flight_number']
-        Departure=request.form['Departure']
-        Destination=request.form['Destination']
-        Departure_time=request.form['Departure_time']
+        Airways = request.args.get('Airways')
+        Flight_number = request.args.get('Flight_number')
+        Departure = request.args.get('Departure')
+        Destination = request.args.get('Destination')
+        Departure_time = request.args.get('Departure_time')
+        Price = request.args.get('Price')
 
         mydb=db_connection()
-        cursor=mydb.cursor()
-        cursor.execute("insert into Flight (passenger_name, Age, Gender, Airways, Flight_number, Departure, Destination, Departure_time) values (%s,%s,%s,%s,%s,%s,%s,%s)",(passenger_name,Age,Gender,Airways,Flight_number,Departure,Destination,Departure_time))
-        cursor.close()
-        mydb.close()
-        flash("Ticket Booked Successfully","success")
+        cursor=mydb.cursor(dictionary=True)
+        cursor.execute("select * from Flight_Details where Flight_number=%s",(Flight_number,))
+        flight=cursor.fetchone()
+        if flight:
+            cursor.execute("insert into Flight (passenger_name, Age, Gender, Airways, Flight_number, Departure, Destination, Departure_time, Price) values (%s,%s,%s,%s,%s,%s,%s,%s,%s)",(passenger_name,Age,Gender,Airways,Flight_number,Departure,Destination,Departure_time,Price))
+            cursor.close()
+            mydb.close()
+            flash("Ticket Booked Successfully","success")
     return render_template('Booking.html')
 
 @app.route('/Update',methods=['GET','POST'])
