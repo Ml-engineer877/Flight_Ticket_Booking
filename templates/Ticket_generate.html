@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boarding Pass</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='Ticket_generate.css') }}">
+</head>
+<body>
+<a href="{{ url_for('dashboard') }}" class="back-btn">⬅ Back to Dashboard</a>
+<div class="boarding-pass">
+
+  <div class="header">
+    <span class="airline">✈ {{ flights.Airways }} Airways</span>
+    <span class="flight">✈ Flight: {{ flights.Flight_number }}</span>
+  </div>
+
+  <div class="ticket-body">
+    
+    <div class="section left">
+      <p><strong>Passenger Name:</strong> {{ flights.Passenger_name }}</p>
+      <p><strong>Passenger ID:</strong> {{ flights.Passenger_id }}</p>
+      <p><strong>Date Of Journey:</strong> {{ flights.Date }}</p>
+      <p><strong>Departure Time:</strong> {{ flights.Departure_time }}</p>
+    </div>
+
+    <div class="section center">
+      <div class="route">
+        <span class="from">{{ flights.Departure }}</span>
+        <span class="plane">✈</span>
+        <span class="to">{{ flights.Destination }}</span>
+      </div>
+      <small>Non-transfer · Direct Flight</small>
+    </div>
+
+    <div class="section right">
+      <div class="barcode"></div>
+      <small>BOARDING PASS</small>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

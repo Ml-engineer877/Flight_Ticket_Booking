@@ -21,6 +21,7 @@
     <form method="POST" action="/login">
         <input type="text" name="username" placeholder="Enter Username" required>
         <input type="password" name="password" placeholder="Enter Password" required>
+        <a href="{{url_for('forget_password')}}">Forget Password</a>
         <button type="submit">Login</button>
     </form>
 

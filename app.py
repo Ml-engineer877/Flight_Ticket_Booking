@@ -51,25 +51,34 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-
         mydb = db_connection()
         cursor = mydb.cursor()
-
-        cursor.execute("SELECT * FROM Users WHERE username=%s AND password=%s",
-                       (username, password))
+        cursor.execute("SELECT * FROM Users WHERE username=%s AND password=%s",(username, password))
         result = cursor.fetchone()
-
         cursor.close()
         mydb.close()
-
         if result:
             session['username'] = username
             return redirect(url_for('dashboard'))
         else:
             flash("Incorrect Username Or Password", "danger")
-
     return render_template("login.html")
 
+@app.route('/forget_password',methods=['GET','POST'])
+def forget_password():
+    email=request.form.get('email')
+    password=request.form.get('password')
+    mydb=db_connection()
+    cursor=mydb.cursor()
+    cursor.execute("select * from Users where email=%s",(email,))
+    result=cursor.fetchone()
+    if result:
+        cursor.execute("update Users set password=%s where email=%s",(password,email))
+        flash("Password Updated Successfully","success")
+        return redirect(url_for('login'))
+    else:
+        flash("Incorrect Email")
+    return render_template("Forgrt_password.html")
 
 @app.route('/dashboard')
 def dashboard():
@@ -107,17 +116,29 @@ def Booking():
         Destination = request.args.get('Destination')
         Departure_time = request.args.get('Departure_time')
         Price = request.args.get('Price')
+        Date=request.form['Date']
 
         mydb=db_connection()
         cursor=mydb.cursor(dictionary=True)
         cursor.execute("select * from Flight_Details where Flight_number=%s",(Flight_number,))
         flight=cursor.fetchone()
         if flight:
-            cursor.execute("insert into Flight (passenger_name, Age, Gender, Airways, Flight_number, Departure, Destination, Departure_time, Price) values (%s,%s,%s,%s,%s,%s,%s,%s,%s)",(passenger_name,Age,Gender,Airways,Flight_number,Departure,Destination,Departure_time,Price))
+            cursor.execute("insert into Flight (passenger_name, Age, Gender, Airways, Flight_number, Departure, Destination, Departure_time, Price, Date) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(passenger_name,Age,Gender,Airways,Flight_number,Departure,Destination,Departure_time,Price,Date))
             cursor.close()
             mydb.close()
-            flash("Ticket Booked Successfully","success")
+            return redirect(url_for('Ticket_generate', Flight_number=Flight_number))
+            #flash("Ticket Booked Successfully","success")
     return render_template('Booking.html')
+@app.route('/Ticket_generate',methods=['GET'])
+def Ticket_generate():
+        Flight_number=request.args.get('Flight_number')
+        mydb=db_connection()
+        cursor=mydb.cursor(dictionary=True)
+        cursor.execute("select * from Flight where Flight_number=%s ORDER BY Passenger_id DESC LIMIT 1",(Flight_number,))
+        flights=cursor.fetchone()
+        if not flights:
+            return "No ticket found for this Flight Number!"
+        return render_template("Ticket_generate.html",flights=flights)
 
 @app.route('/Update',methods=['GET','POST'])
 def Update():

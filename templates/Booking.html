@@ -19,10 +19,13 @@
         <h2>✈ Flight Ticket Booking</h2>
 
         <form method="POST">
+
             <input type="text" name="passenger_name" placeholder="Enter Passenger Name" required>
             <input type="number" name="Age" placeholder="Enter Age" required>
             <input type="text" name="Gender" placeholder="Gender" required>
+            <input type="text" name="Date" placeholder="DD/MM/YYYY" required>
             <button type="submit">✅ Save Booking</button>
+
         </form>
 
         <a href="{{url_for('dashboard')}}" class="back-btn">⬅ Back to Dashboard</a>
