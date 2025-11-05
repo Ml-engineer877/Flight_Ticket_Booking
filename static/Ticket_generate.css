@@ -30,6 +30,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 25px;
+  gap: 25px;
 }
 
 .section {
@@ -93,4 +94,48 @@ small {
 .back-btn:hover {
   background: #0f2f47;
   transform: scale(1.05);
+}
+
+/* ===== 📱 Mobile Responsive Fix ===== */
+@media (max-width: 800px) {
+
+  body {
+    padding: 20px;
+  }
+
+  .boarding-pass {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .ticket-body {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .route {
+    font-size: 22px;
+  }
+
+  .route .plane {
+    font-size: 24px;
+    margin: 0 8px;
+  }
+
+  .section.left p,
+  .section.right p {
+    font-size: 14px;
+  }
+
+  .barcode {
+    margin: 15px auto 0 auto;
+  }
+
+  .back-btn {
+    top: 15px;
+    right: 15px;
+    padding: 8px 14px;
+    font-size: 12px;
+  }
 }

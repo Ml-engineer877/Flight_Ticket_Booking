@@ -33,17 +33,10 @@ body {
     font-weight: 600;
 }
 
-input{
-    width: 400px;
-    padding: 10px;
-    margin: 6px 0;
-    border-radius: 6px;
-    border: none;
-    outline: none;
-}
-
+/* Inputs */
+input,
 select {
-    width: 420px;
+    width: 100%;
     padding: 10px;
     margin: 6px 0;
     border-radius: 6px;
@@ -51,9 +44,10 @@ select {
     outline: none;
 }
 
+/* Update Button */
 .btn-update {
     margin-top: 12px;
-    width: 95%;
+    width: 100%;
     padding: 12px;
     background: #ffb703;
     border: none;
@@ -66,6 +60,7 @@ select {
     background: #e09b02;
 }
 
+/* Back Button */
 .back-btn {
     display: inline-block;
     margin-top: 12px;
@@ -73,53 +68,62 @@ select {
     color: #fff;
     font-size: 14px;
 }
+
 .back-btn:hover {
     color: #00b4d8;
 }
 
+/* Flash Messages */
+.flash-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    animation: fadeInOut 3s ease forwards;
+    z-index: 9999;
+    width: auto;
+    text-align: center;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+    color: #fff;
+}
 
-        /* Flash Messages */
-        .flash-message {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 500;
-            animation: fadeInOut 3s ease forwards;
-            z-index: 9999;
-            color: #fff;
-            width: auto;
-            text-align: center;
-            box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
-        }
+/* Success */
+.flash-success {
+    background-color: #28a745;
+}
 
-        /* Success (Green) */
-        .flash-success {
-            background-color: #28a745;
-        }
+/* Error */
+.flash-danger {
+    background-color: #dc3545;
+}
 
-        /* Error (Red) */
-        .flash-danger {
-            background-color: #dc3545;
-        }
+/* Info */
+.flash-info {
+    background-color: #007bff;
+}
 
-        /* Info (Blue) */
-        .flash-info {
-            background-color: #007bff;
-        }
+/* Warning */
+.flash-warning {
+    background-color: #ffc107;
+    color: #333;
+}
 
-        /* Warning (Orange) */
-        .flash-warning {
-            background-color: #ffc107;
-            color: #333;
-        }
+/* Fade Animation */
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, -20px); }
+    10% { opacity: 1; transform: translate(-50%, 0); }
+    90% { opacity: 1; transform: translate(-50%, 0); }
+    100% { opacity: 0; transform: translate(-50%, -20px); }
+}
 
-        @keyframes fadeInOut {
-            0% { opacity: 0; transform: translate(-50%, -20px); }
-            10% { opacity: 1; transform: translate(-50%, 0); }
-            90% { opacity: 1; transform: translate(-50%, 0); }
-            100% { opacity: 0; transform: translate(-50%, -20px); }
-        }
+/* ✅ Mobile Responsive */
+@media (max-width: 480px){
+    .form-container {
+        width: 90%;
+        padding: 20px;
+    }
+}

@@ -9,13 +9,15 @@ body {
     height: 100vh;
 }
 
+/* Main Form Box */
 .form-container {
     background: rgba(255,255,255,0.15);
     padding: 35px 45px;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.4);
     backdrop-filter: blur(8px);
-    width: 400px;
+    width: 90%;               /* responsive width */
+    max-width: 400px;         /* keeps original size on laptop */
     text-align: center;
     color: rgb(8, 8, 8);
 }
@@ -37,7 +39,7 @@ input{
 }
 
 select {
-    width: 106%;
+    width: 100%;             /* fixed here, so no overflow in mobile */
     padding: 12px;
     margin-bottom: 14px;
     border-radius: 6px;
@@ -75,48 +77,55 @@ button:hover {
     color: #00b4d8;
 }
 
-        /* Flash Messages */
-        .flash-message {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 500;
-            animation: fadeInOut 3s ease forwards;
-            z-index: 9999;
-            color: #fff;
-            width: auto;
-            text-align: center;
-            box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
-        }
+/* Flash Messages */
+.flash-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    animation: fadeInOut 3s ease forwards;
+    z-index: 9999;
+    color: #fff;
+    width: auto;
+    text-align: center;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+}
 
-        /* Success (Green) */
-        .flash-success {
-            background-color: #28a745;
-        }
+.flash-success { background-color: #28a745; }
+.flash-danger { background-color: #dc3545; }
+.flash-info { background-color: #007bff; }
+.flash-warning { background-color: #ffc107; color: #333; }
 
-        /* Error (Red) */
-        .flash-danger {
-            background-color: #dc3545;
-        }
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, -20px); }
+    10% { opacity: 1; transform: translate(-50%, 0); }
+    90% { opacity: 1; transform: translate(-50%, 0); }
+    100% { opacity: 0; transform: translate(-50%, -20px); }
+}
 
-        /* Info (Blue) */
-        .flash-info {
-            background-color: #007bff;
-        }
+/* ✅ MOBILE RESPONSIVE FIX */
+@media (max-width: 600px) {
 
-        /* Warning (Orange) */
-        .flash-warning {
-            background-color: #ffc107;
-            color: #333;
-        }
+    body {
+        padding: 0 10px;
+        height: auto;
+    }
 
-        @keyframes fadeInOut {
-            0% { opacity: 0; transform: translate(-50%, -20px); }
-            10% { opacity: 1; transform: translate(-50%, 0); }
-            90% { opacity: 1; transform: translate(-50%, 0); }
-            100% { opacity: 0; transform: translate(-50%, -20px); }
-        }
+    .form-container {
+        padding: 25px 20px;
+        border-radius: 12px;
+    }
+
+    .form-container h2 {
+        font-size: 22px;
+    }
+
+    button {
+        font-size: 15px;
+        padding: 10px;
+    }
+}

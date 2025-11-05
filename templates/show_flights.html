@@ -31,17 +31,15 @@
             {% for f in result %}
             <!-- f expected: [id, Airway, Flight_number, Departure, Destination, Departure_time, Price] -->
             <tr>
-              <td>{{ f['Passenger_id'] }}</td>
-              <td>{{ f['Passenger_name'] }}</td>
-              <td class="airline">{{ f['Airways'] }}</td>
-              <td>{{ f['Flight_number'] }}</td>
-              <td>{{ f['Departure'] }}</td>
-              <td>{{ f['Destination'] }}</td>
-              <td>{{ f['Departure_time'] }}</td>
-              <td>₹{{ f['Price'] }}</td>
-              <td class="book-col">
-                <a href="{{ url_for('Update',Passenger_id=f['Passenger_id'],Airways=f['Airways'],Flight_number=f['Flight_number'],Departure=f['Departure'],Destination=f['Destination'],Departure_time=f['Departure_time'],Price=f['Price'])}}" class="btn small primary">Update Ticket</a>
-              </td>
+              <td data-label="Passenger ID">{{ f['Passenger_id'] }}</td>
+              <td data-label="Passenger Name">{{ f['Passenger_name'] }}</td>
+              <td class="airline" data-label="Airways">{{ f['Airways'] }}</td>
+              <td data-label="Flight Number">{{ f['Flight_number'] }}</td>
+              <td data-label="Departure">{{ f['Departure'] }}</td>
+              <td data-label="Destination">{{ f['Destination'] }}</td>
+              <td data-label="Departure Time">{{ f['Departure_time'] }}</td>
+              <td data-label="Price">₹{{ f['Price'] }}</td>
+              <td class="book-col" data-label="Book"><a href="{{ url_for('Booking',Airways=f['Airways'],Flight_number=f['Flight_number'],Departure=f['Departure'],Destination=f['Destination'],Departure_time=f['Departure_time'],Price=f['Price']) }}"class="btn small primary">Book Ticket</a></td>
             </tr>
             {% endfor %}
           </tbody>

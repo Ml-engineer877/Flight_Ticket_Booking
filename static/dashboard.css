@@ -47,6 +47,8 @@ body {
     text-align: center;
     backdrop-filter: blur(8px);
     color: white;
+    width: 90%;
+    max-width: 450px; /* keeps original look but responsive */
 }
 
 .dashboard-box h3 {
@@ -80,4 +82,33 @@ body {
 .action-btn:hover {
     background: #007bff;
     transform: scale(1.05);
+}
+
+/* ✅ Mobile Responsive Design */
+@media (max-width: 600px) {
+
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        padding: 12px 20px;
+    }
+
+    .hero {
+        height: auto;
+        padding: 40px 0;
+    }
+
+    .dashboard-box {
+        padding: 30px 25px;
+    }
+
+    .dashboard-box h3 {
+        font-size: 24px;
+    }
+
+    .action-btn {
+        font-size: 15px;
+        padding: 10px;
+    }
 }

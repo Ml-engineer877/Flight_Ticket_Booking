@@ -3,8 +3,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
-    background: url("/static/Flight_image2.jpg");   
-    background-position: center; 
+    background: url("/static/Flight_image2.jpg");
+    background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -34,6 +34,8 @@ label {
     display: block;
     margin-top: 15px;
 }
+
+/* Input Fields */
 input {
     width: 90%;
     padding: 12px;
@@ -43,6 +45,7 @@ input {
     outline: none;
     background: rgba(255,255,255,0.85);
 }
+
 /* Select Fields */
 select {
     width: 100%;
@@ -113,4 +116,50 @@ select {
 .flights-table tr:hover td {
     background: rgba(255, 255, 255, 0.25);
     cursor: pointer;
+}
+
+/* ------------------ RESPONSIVE ------------------ */
+@media (max-width: 600px) {
+
+    body {
+        background-attachment: scroll;
+    }
+
+    .search-container {
+        width: 90%;
+        margin: 20px auto;
+        padding: 18px;
+    }
+
+    input, select, .search-btn {
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    /* Make table mobile-friendly */
+    .flights-table thead {
+        display: none;
+    }
+
+    .flights-table tr {
+        display: block;
+        margin-bottom: 12px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .flights-table td {
+        display: block;
+        text-align: left;
+        padding: 10px 14px;
+        position: relative;
+    }
+
+    .flights-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #080808;
+        display: block;
+        margin-bottom: 4px;
+    }
 }

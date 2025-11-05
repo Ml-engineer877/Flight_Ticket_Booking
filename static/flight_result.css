@@ -34,10 +34,11 @@ body{
 .hero h1{ margin:0 0 6px; font-size:24px; letter-spacing:0.3px; }
 .hero p{ margin:0; color:var(--muted); }
 
-/* Search form (used on search page) */
+/* Search form */
 .search-wrap{ display:flex; justify-content:center; }
 .search-form{
-  width:420px;
+  width:90%;
+  max-width:420px;
   background: var(--card);
   padding:18px;
   border-radius:10px;
@@ -90,11 +91,41 @@ body{
 /* back buttons row */
 .back-row{ margin-top:18px; display:flex; gap:10px; justify-content:flex-end; }
 
-/* Responsive */
+/* ✅ Improved Mobile Responsive Layout */
 @media (max-width:720px){
-  .search-form{ width:94%; }
+
+  /* Keep form centered */
+  .search-form{ width:100%; }
+
+  /* Hide table header */
   .flight-table thead{ display:none; }
-  .flight-table tbody td{ display:block; width:100%; text-align:left; padding:10px 16px; }
-  .flight-table tbody tr{ margin-bottom:12px; display:block; border-radius:8px; overflow:hidden; }
-  .book-col{ text-align:right; padding:10px 16px; }
+
+  /* Turn each row into a card */
+  .flight-table tbody tr{
+    display:block;
+    margin-bottom:14px;
+    border-radius:10px;
+    overflow:hidden;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .flight-table tbody td{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 16px;
+    text-align:left;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+  }
+
+  /* Add labels automatically for meaning */
+  .flight-table tbody td::before{
+    content: attr(data-label);
+    font-weight:600;
+    color: var(--muted);
+  }
+
+  .book-col{
+    text-align:right;
+    padding:10px 16px;
+  }
 }

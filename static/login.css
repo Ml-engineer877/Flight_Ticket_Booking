@@ -101,8 +101,43 @@ p a:hover {
 .flash-danger { background: #f8d7da; color: #721c24; }
 
 @keyframes fadeInOut {
-            0% { opacity: 0; transform: translate(-50%, -20px); }
-            10% { opacity: 1; transform: translate(-50%, 0); }
-            90% { opacity: 1; transform: translate(-50%, 0); }
-            100% { opacity: 0; transform: translate(-50%, -20px); }
-        }
+    0% { opacity: 0; transform: translate(-50%, -20px); }
+    10% { opacity: 1; transform: translate(-50%, 0); }
+    90% { opacity: 1; transform: translate(-50%, 0); }
+    100% { opacity: 0; transform: translate(-50%, -20px); }
+}
+
+
+/* ------------------ MOBILE RESPONSIVE ------------------ */
+@media (max-width: 600px) {
+
+    body {
+        background-attachment: scroll;
+    }
+
+    .form-container {
+        width: 90%;
+        margin: 70px auto;
+        padding: 20px;
+    }
+
+    .form-container h2 {
+        font-size: 24px;
+    }
+
+    input, button {
+        font-size: 15px;
+        width: 100%;
+    }
+
+    .a1 {
+        padding-left: 0;
+        display: block;
+        margin-top: 8px;
+        text-align: center;
+    }
+
+    .flash-message {
+        width: 90%;
+    }
+}

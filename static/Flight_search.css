@@ -5,8 +5,8 @@ body {
     padding: 0;
     font-family: "Poppins", sans-serif;
     background: url("/static/Flight_image3.jpg");
-    background-size: cover;     
-    background-position: center; 
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: #090909;
@@ -106,4 +106,54 @@ select {
 .flights-table tr:hover td {
     background: rgba(255, 255, 255, 0.25);
     cursor: pointer;
+}
+
+/* ------------------ RESPONSIVE ------------------ */
+@media (max-width: 600px) {
+
+    body {
+        background-attachment: scroll;
+    }
+
+    .search-container {
+        width: 90%;
+        margin: 20px auto;
+        padding: 18px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    select, .search-btn {
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    /* Responsive Table */
+    .flights-table thead {
+        display: none;
+    }
+
+    .flights-table tr {
+        display: block;
+        margin-bottom: 12px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .flights-table td {
+        display: block;
+        text-align: left;
+        padding: 10px 14px;
+        position: relative;
+    }
+
+    .flights-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #080808;
+        display: block;
+        margin-bottom: 4px;
+    }
 }
