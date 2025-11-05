@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login | Flight Booking</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <title>🔐 Login | Flight Booking</title>
+    <link rel="stylesheet" href="/static/login.css">
 </head>
 <body>
 
@@ -21,7 +21,7 @@
     <form method="POST" action="/login">
         <input type="text" name="username" placeholder="Enter Username" required>
         <input type="password" name="password" placeholder="Enter Password" required>
-        <a href="{{url_for('forget_password')}}">Forget Password</a>
+        <a href="{{url_for('forget_password')}}" class="a1">Forget Password</a>
         <button type="submit">Login</button>
     </form>
 

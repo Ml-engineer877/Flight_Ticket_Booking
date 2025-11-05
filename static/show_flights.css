@@ -1,0 +1,100 @@
+/* Page wide */
+:root{
+  --bg1: linear-gradient(120deg, #071427 0%, #0f2a44 100%);
+  --card: rgba(255,255,255,0.06);
+  --accent: #00b4d8;
+  --muted: rgba(255,255,255,0.75);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: "Poppins", Arial, sans-serif;
+  background: var(--bg1);
+  color: #fff;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* container & hero */
+.page-container{
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.hero{
+  text-align:center;
+  padding: 28px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  margin-bottom: 18px;
+}
+.hero.small{ padding:16px; margin-bottom:10px; }
+
+.hero h1{ margin:0 0 6px; font-size:24px; letter-spacing:0.3px; }
+.hero p{ margin:0; color:var(--muted); }
+
+/* Search form (used on search page) */
+.search-wrap{ display:flex; justify-content:center; }
+.search-form{
+  width:420px;
+  background: var(--card);
+  padding:18px;
+  border-radius:10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+.field{ margin-bottom:12px; }
+.field label{ display:block; margin-bottom:6px; font-weight:600; color:var(--muted); font-size:13px;}
+.search-form select{
+  width:100%; padding:10px 12px; border-radius:8px; border:none; font-size:14px; outline:none;
+  background: rgba(255,255,255,0.95); color:#0b1720;
+}
+
+/* Buttons */
+.btn{
+  display:inline-block; padding:10px 14px; border-radius:8px; text-decoration:none; font-weight:600; color:#fff;
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.06);
+}
+.btn:hover{ transform:translateY(-3px); transition:0.18s; box-shadow: 0 8px 24px rgba(0,0,0,0.45); }
+.btn.primary{ background: linear-gradient(90deg,var(--accent), #0077b6); box-shadow: 0 8px 20px rgba(0,180,216,0.12); border:none; }
+.btn.ghost{ background:transparent; border:1px solid rgba(255,255,255,0.06); }
+
+/* Results table */
+.results-wrap{ margin-top:18px; }
+.flight-table{
+  width:100%;
+  border-collapse:collapse;
+  overflow:hidden;
+  border-radius:10px;
+}
+.flight-table thead th{
+  text-align:center; padding:12px; font-weight:700; font-size:14px;
+  background: linear-gradient(90deg,var(--accent), #006494);
+  color:#fff;
+}
+.flight-table tbody td{
+  text-align:center; padding:12px; border-bottom:1px solid rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.02);
+  color: #fff;
+}
+.flight-table tbody tr:hover td{ background: rgba(255,255,255,0.04); }
+
+/* small column styling */
+.airline{ font-weight:700; color:#ffd; }
+.book-col .btn.small{ padding:8px 10px; font-size:13px; border-radius:6px; }
+
+/* Empty state */
+.empty{ text-align:center; padding:30px; background: rgba(255,255,255,0.02); border-radius:8px; }
+.empty p{ color:var(--muted); margin-bottom:12px; }
+
+/* back buttons row */
+.back-row{ margin-top:18px; display:flex; gap:10px; justify-content:flex-end; }
+
+/* Responsive */
+@media (max-width:720px){
+  .search-form{ width:94%; }
+  .flight-table thead{ display:none; }
+  .flight-table tbody td{ display:block; width:100%; text-align:left; padding:10px 16px; }
+  .flight-table tbody tr{ margin-bottom:12px; display:block; border-radius:8px; overflow:hidden; }
+  .book-col{ text-align:right; padding:10px 16px; }
+}

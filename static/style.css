@@ -9,13 +9,24 @@
 /* ===== Background with Airplane Gradient Image ===== */
 body{
     background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-        url("https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=1500&q=80")
+        url("https://images.unsplash.com/photo-1529074963764-98f45c47344b")
         no-repeat center center fixed;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+.back-btn {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #030303d7;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.back-btn:hover {
+    color: #00b4d8;
 }
 
 /* ===== Flash Messages (Success / Error) ===== */
@@ -28,7 +39,7 @@ body{
     border-radius: 6px;
     font-size: 14px;
     color: #fff;
-    animation: fadeout 4s forwards;
+    animation: fadeInOut 3s ease forwards;
 }
 
 .flash-success{
@@ -39,11 +50,12 @@ body{
     background: #e63946;
 }
 
-@keyframes fadeout{
-    0%{ opacity: 1; }
-    80%{ opacity: 1; }
-    100%{ opacity: 0; }
-}
+@keyframes fadeInOut {
+            0% { opacity: 0; transform: translate(-50%, -20px); }
+            10% { opacity: 1; transform: translate(-50%, 0); }
+            90% { opacity: 1; transform: translate(-50%, 0); }
+            100% { opacity: 0; transform: translate(-50%, -20px); }
+        }
 
 /* ===== Form Container ===== */
 .form-container{
@@ -107,13 +119,14 @@ body{
 }
 
 .form-container a{
-    color: #ffd60a;
+    color: #000000;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .form-container a:hover{
     text-decoration: underline;
+    color: #00b4d8;
 }
 
 .flash-message {
@@ -121,7 +134,7 @@ body{
     border-radius: 6px;
     margin: 12px 0;
     font-size: 15px;
-    animation: fadeIn 0.4s ease-in-out;
+    animation: fadeInOut 3s ease forwards;
 }
 
 /* Success Message */
@@ -153,8 +166,10 @@ body{
 }
 
 /* Fade Animation */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-4px);}
-    to { opacity: 1; transform: translateY(0);}
-}
+@keyframes fadeInOut {
+            0% { opacity: 0; transform: translate(-50%, -20px); }
+            10% { opacity: 1; transform: translate(-50%, 0); }
+            90% { opacity: 1; transform: translate(-50%, 0); }
+            100% { opacity: 0; transform: translate(-50%, -20px); }
+        }
 

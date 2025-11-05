@@ -17,7 +17,7 @@ body {
     backdrop-filter: blur(8px);
     width: 400px;
     text-align: center;
-    color: white;
+    color: rgb(8, 8, 8);
 }
 
 .form-container h2 {
@@ -53,7 +53,7 @@ button {
     background: #007bff;
     border: none;
     border-radius: 6px;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 16px;
     cursor: pointer;
 }
@@ -65,13 +65,14 @@ button:hover {
 .back-btn {
     display: block;
     margin-top: 15px;
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     font-weight: bold;
 }
 
 .back-btn:hover {
     text-decoration: underline;
+    color: #00b4d8;
 }
 
         /* Flash Messages */

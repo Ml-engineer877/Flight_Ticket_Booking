@@ -39,7 +39,7 @@ def register():
             flash("Registered Successfully", "success")
             cursor.close()
             mydb.close()
-            return redirect(url_for('login'))
+            return redirect(url_for('dashboard'))
 
         cursor.close()
         mydb.close()
@@ -66,18 +66,25 @@ def login():
 
 @app.route('/forget_password',methods=['GET','POST'])
 def forget_password():
-    email=request.form.get('email')
-    password=request.form.get('password')
-    mydb=db_connection()
-    cursor=mydb.cursor()
-    cursor.execute("select * from Users where email=%s",(email,))
-    result=cursor.fetchone()
-    if result:
-        cursor.execute("update Users set password=%s where email=%s",(password,email))
-        flash("Password Updated Successfully","success")
-        return redirect(url_for('login'))
-    else:
-        flash("Incorrect Email")
+    if request.method=='POST':
+        email=request.form.get('email')
+        password=request.form.get('password')
+        con_password=request.form.get('con_password')
+        mydb=db_connection()
+        cursor=mydb.cursor()
+        cursor.execute("select * from Users where email=%s",(email,))
+        result=cursor.fetchone()
+        if result:
+            if password==con_password:
+                cursor.execute("update Users set password=%s where email=%s",(password,email))
+                mydb.commit()
+                mydb.close()
+                flash("Password Updated Successfully","success")
+                return redirect(url_for('login'))
+            else:
+                flash("Mismatching Password","danger")
+        else:
+            flash("Incorrect Email","danger")
     return render_template("Forgrt_password.html")
 
 @app.route('/dashboard')
@@ -129,6 +136,7 @@ def Booking():
             return redirect(url_for('Ticket_generate', Flight_number=Flight_number))
             #flash("Ticket Booked Successfully","success")
     return render_template('Booking.html')
+
 @app.route('/Ticket_generate',methods=['GET'])
 def Ticket_generate():
         Flight_number=request.args.get('Flight_number')
@@ -138,7 +146,26 @@ def Ticket_generate():
         flights=cursor.fetchone()
         if not flights:
             return "No ticket found for this Flight Number!"
+        cursor.close()
+        mydb.close()
         return render_template("Ticket_generate.html",flights=flights)
+
+@app.route('/flight_search1',methods=['GET','POST'])
+def flight_search1():
+    return render_template('Flight_search1.html')
+
+
+@app.route('/show_flights',methods=['GET','POST'])
+def show_flights():
+    if request.method=='POST':
+        passenger_name=request.form.get('passenger_name')
+        mydb=db_connection()
+        cursor=mydb.cursor(dictionary=True)
+        cursor.execute("select * from Flight where passenger_name=%s",(passenger_name,))
+        result=cursor.fetchall()
+        cursor.close()
+        mydb.close()
+        return render_template('show_flights.html',result=result)
 
 @app.route('/Update',methods=['GET','POST'])
 def Update():
@@ -146,15 +173,11 @@ def Update():
         passenger_name=request.form['passenger_name']
         Age=request.form['Age']
         Gender=request.form['Gender']
-        Airways=request.form['Airways']
-        Flight_number=request.form['Flight_number']
-        Departure=request.form['Departure']
-        Destination=request.form['Destination']
-        Departure_time=request.form['Departure_time']
+        Passenger_id=request.args.get('Passenger_id')
 
         mydb=db_connection()
         cursor=mydb.cursor()
-        cursor.execute("update Flight set Age=%s,Gender=%s,Airways=%s,Flight_number=%s,Departure=%s,Destination=%s,Departure_time=%s where passenger_name=%s",(Age,Gender,Airways,Flight_number,Departure,Destination,Departure_time,passenger_name))
+        cursor.execute("update Flight set passenger_name=%s, Age=%s,Gender=%s where Passenger_id=%s",(passenger_name,Age,Gender,Passenger_id))
         cursor.close()
         mydb.close()
         flash("Ticket Updated Successfully","success")
@@ -164,13 +187,13 @@ def Update():
 def cancel_ticket():
     if request.method=='POST':
         passenger_name=request.form['passenger_name']
-        Flight_number=request.form['Flight_number']
+        Passenger_id=request.form.get('Passenger_id')
         mydb=db_connection()
         cursor=mydb.cursor()
-        cursor.execute("select * from Flight where passenger_name=%s and Flight_number=%s",(passenger_name,Flight_number))
+        cursor.execute("select * from Flight where passenger_id=%s" ,(Passenger_id,))
         result=cursor.fetchone()
         if result:
-            cursor.execute("delete from Flight where passenger_name=%s and Flight_number=%s",(passenger_name,Flight_number))
+            cursor.execute("delete from Flight where passenger_id=%s ",(Passenger_id,))
             flash("Ticket Cancelled Successfully","success")
             mydb.commit()
         else:

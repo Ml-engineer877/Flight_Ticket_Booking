@@ -73,6 +73,10 @@ select {
     color: #fff;
     font-size: 14px;
 }
+.back-btn:hover {
+    color: #00b4d8;
+}
+
 
         /* Flash Messages */
         .flash-message {

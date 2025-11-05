@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🔍 Search Users</title>
+    <link rel="stylesheet" href="/static/Flight_search1.css">
+</head>
+<body>
+
+<div class="search-container">
+    <h2>✈ Search Users</h2>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash-message flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+    <form method="POST" action="/show_flights">
+
+        <input type="text" name="passenger_name" placeholder="Enter Passenger Name" required>
+        <button type="submit" class="search-btn">🔍 Search Users</button>
+    </form>
+
+    <a href="{{url_for('dashboard')}}" class="back-btn">⬅ Back</a>
+</div>
+
+</body>
+</html>

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cancel Ticket</title>
+    <title>❌✈️ Cancel Ticket</title>
 
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: url('https://images.pexels.com/photos/261120/pexels-photo-261120.jpeg?auto=compress') no-repeat center center/cover;
+            background: url('/static/Flight_image4.jpg') no-repeat center center/cover;
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -52,11 +52,17 @@
         }
 
         .back-btn {
-            display: inline-block;
+            display:block;
+            padding-left: 125px;
             margin-top: 12px;
             text-decoration: none;
             color: #0f0e0e;
             font-size: 14px;
+        }
+
+
+        .back-btn:hover {
+            color: #00b4d8;
         }
 
         /* Flash Messages */
@@ -122,7 +128,7 @@
 
         <input type="text" name="passenger_name" placeholder="Enter Passenger Name" required>
 
-        <input type="text" name="Flight_number" placeholder="Enter Flight Number" required>
+        <input type="text" name="Passenger_id" placeholder="Enter Passenger_id" required>
 
         <button type="submit" class="cancel-box1">Calcel Ticket</button>
         <a href="{{url_for('dashboard')}}" class="back-btn">⬅ Back to Dashboard</a>
