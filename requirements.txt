@@ -1,9 +1,5 @@
 flask
 gunicorn
-opencv-python
-numpy
-pillow
-facenet-pytorch
-ultralytics
-torch
-torchvision
+mysql
+mysql-connector
+mysql-connector-python
