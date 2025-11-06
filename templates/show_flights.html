@@ -39,7 +39,7 @@
               <td data-label="Destination">{{ f['Destination'] }}</td>
               <td data-label="Departure Time">{{ f['Departure_time'] }}</td>
               <td data-label="Price">₹{{ f['Price'] }}</td>
-              <td class="book-col" data-label="Book"><a href="{{ url_for('Update',Airways=f['Airways'],Flight_number=f['Flight_number'],Departure=f['Departure'],Destination=f['Destination'],Departure_time=f['Departure_time'],Price=f['Price']) }}"class="btn small primary">Book Ticket</a></td>
+              <td class="book-col" data-label="Update"><a href="{{ url_for('Update',Airways=f['Airways'],Flight_number=f['Flight_number'],Departure=f['Departure'],Destination=f['Destination'],Departure_time=f['Departure_time'],Price=f['Price']) }}"class="btn small primary">Update Ticket</a></td>
             </tr>
             {% endfor %}
           </tbody>

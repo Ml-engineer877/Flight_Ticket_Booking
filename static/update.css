@@ -34,9 +34,16 @@ body {
 }
 
 /* Inputs */
-input,
+input {
+    width: 400px;
+    padding: 10px;
+    margin: 6px 0;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+}
 select {
-    width: 100%;
+    width: 420px;
     padding: 10px;
     margin: 6px 0;
     border-radius: 6px;
