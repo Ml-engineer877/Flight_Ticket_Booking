@@ -9,6 +9,7 @@ body {
 
 .boarding-pass {
   width: 750px;
+  max-width: 95%; /* responsive width */
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 8px 18px rgba(0,0,0,0.2);
@@ -109,13 +110,22 @@ small {
   }
 
   .ticket-body {
-    flex-direction: column;
+    flex-direction: column; /* stack sections vertically */
     text-align: center;
     gap: 15px;
+    padding: 20px; /* reduce padding */
+  }
+
+  .section.left,
+  .section.right,
+  .section.center {
+    flex: unset; /* remove flex grow */
+    width: 100%; /* full width for each section */
   }
 
   .route {
     font-size: 22px;
+    margin-bottom: 8px;
   }
 
   .route .plane {
@@ -124,8 +134,10 @@ small {
   }
 
   .section.left p,
-  .section.right p {
+  .section.right p,
+  .section.center p {
     font-size: 14px;
+    margin: 4px 0;
   }
 
   .barcode {

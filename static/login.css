@@ -1,3 +1,4 @@
+/* ===== Body / Background ===== */
 body {
     margin: 0;
     font-family: Poppins, sans-serif;
@@ -5,6 +6,7 @@ body {
     height: 100vh;
 }
 
+/* ===== Overlay ===== */
 .overlay {
     position: fixed;
     width: 100%;
@@ -15,6 +17,7 @@ body {
     backdrop-filter: blur(5px);
 }
 
+/* ===== Form Container ===== */
 .form-container {
     position: relative;
     width: 350px;
@@ -28,26 +31,30 @@ body {
     color: white;
 }
 
+/* ===== Form Heading ===== */
 .form-container h2 {
     margin-bottom: 18px;
     font-size: 28px;
     font-weight: 600;
 }
 
-input {
-    width: 90%;
+/* ===== Inputs ===== */
+.form-container input {
+    width: 95%;
     padding: 12px;
     margin: 8px 0;
     border-radius: 6px;
     border: none;
     outline: none;
     background: rgba(255,255,255,0.85);
+    box-sizing: border-box;
 }
 
-button {
-    margin-top: 12px;
+/* ===== Button ===== */
+.form-container button {
     width: 95%;
     padding: 12px;
+    margin-top: 12px;
     background: #ffca3a;
     border: none;
     border-radius: 6px;
@@ -56,21 +63,27 @@ button {
     transition: 0.2s;
 }
 
-button:hover {
+.form-container button:hover {
     background: #e6b330;
 }
 
-p {
+/* ===== Paragraphs & Links ===== */
+.form-container p {
     margin-top: 12px;
     font-size: 14px;
 }
 
-p a {
+.form-container p a {
     color: #ffca3a;
     font-weight: 600;
     text-decoration: none;
 }
 
+.form-container p a:hover {
+    text-decoration: underline;
+}
+
+/* Additional link */
 .a1 {
     color: #ffca3a;
     font-weight: 550;
@@ -78,15 +91,11 @@ p a {
     text-decoration: none;
 }
 
-p a:hover {
-    text-decoration: underline;
-}
-
 .a1:hover {
     text-decoration: underline;
 }
 
-/* Flash Message Style */
+/* ===== Flash Messages ===== */
 .flash-message {
     position: relative;
     width: 350px;
@@ -100,6 +109,7 @@ p a:hover {
 .flash-success { background: #d4edda; color: #155724; }
 .flash-danger { background: #f8d7da; color: #721c24; }
 
+/* ===== Flash Animation ===== */
 @keyframes fadeInOut {
     0% { opacity: 0; transform: translate(-50%, -20px); }
     10% { opacity: 1; transform: translate(-50%, 0); }
@@ -107,10 +117,8 @@ p a:hover {
     100% { opacity: 0; transform: translate(-50%, -20px); }
 }
 
-
-/* ------------------ MOBILE RESPONSIVE ------------------ */
+/* ===== Mobile Responsive ===== */
 @media (max-width: 600px) {
-
     body {
         background-attachment: scroll;
     }
@@ -125,9 +133,10 @@ p a:hover {
         font-size: 24px;
     }
 
-    input, button {
-        font-size: 15px;
+    .form-container input,
+    .form-container button {
         width: 100%;
+        font-size: 15px;
     }
 
     .a1 {

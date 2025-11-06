@@ -1,36 +1,110 @@
 /* ===== Global Reset ===== */
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
-/* ===== Background ===== */
-body{
+/* ===== Body / Background ===== */
+body {
     background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-        url("https://images.unsplash.com/photo-1529074963764-98f45c47344b")
-        no-repeat center center fixed;
+        url("https://images.unsplash.com/photo-1529074963764-98f45c47344b") no-repeat center center fixed;
     background-size: cover;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
-/* Back Button */
+/* ===== Form Container ===== */
+.form-container {
+    background: rgba(255,255,255,0.15);
+    padding: 40px 45px;
+    width: 350px;
+    text-align: center;
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0px 4px 25px rgba(0,0,0,0.4);
+    animation: slideIn 0.8s ease;
+}
+
+/* Form Animation */
+@keyframes slideIn {
+    from { transform: translateY(-40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* ===== Form Heading ===== */
+.form-container h2 {
+    color: white;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+
+/* ===== Inputs ===== */
+.form-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.75);
+    font-size: 15px;
+}
+
+/* ===== Buttons ===== */
+.form-container button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #00b4d8;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-container button:hover {
+    background: #0077b6;
+    transform: scale(1.04);
+}
+
+/* ===== Paragraphs & Links ===== */
+.form-container p {
+    margin-top: 15px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.form-container a {
+    color: #000000;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.form-container a:hover {
+    text-decoration: underline;
+    color: #00b4d8;
+}
+
+/* ===== Back Button ===== */
 .back-btn {
     display: block;
-    text-align: center;
     margin-top: 15px;
+    text-align: center;
     color: #030303d7;
     text-decoration: none;
     transition: 0.3s;
 }
-.back-btn:hover { color: #00b4d8; }
+
+.back-btn:hover {
+    color: #00b4d8;
+}
 
 /* ===== Flash Messages ===== */
-.flash-message{
+.flash-message {
     position: fixed;
     top: 20px;
     left: 50%;
@@ -42,10 +116,10 @@ body{
     animation: fadeInOut 3s ease forwards;
 }
 
-.flash-success{ background: #28a745; }
-.flash-error{ background: #e63946; }
+.flash-success { background: #28a745; }
+.flash-error { background: #e63946; }
 
-/* Fade Animation */
+/* ===== Flash Animation ===== */
 @keyframes fadeInOut {
     0% { opacity: 0; transform: translate(-50%, -20px); }
     10% { opacity: 1; transform: translate(-50%, 0); }
@@ -53,77 +127,8 @@ body{
     100% { opacity: 0; transform: translate(-50%, -20px); }
 }
 
-/* ===== Form Container ===== */
-.form-container{
-    background: rgba(255,255,255,0.15);
-    padding: 40px 45px;
-    border-radius: 15px;
-    backdrop-filter: blur(8px);
-    width: 350px;
-    text-align: center;
-    box-shadow: 0px 4px 25px rgba(0,0,0,0.4);
-    animation: slideIn 0.8s ease;
-}
-
-@keyframes slideIn {
-    from { transform: translateY(-40px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-/* Headings */
-.form-container h2{
-    color: white;
-    margin-bottom: 18px;
-    letter-spacing: 1px;
-}
-
-/* Inputs */
-.form-container input{
-    width: 100%;
-    padding: 12px;
-    margin: 12px 0;
-    border: none;
-    border-radius: 6px;
-    background: rgba(255,255,255,0.75);
-    font-size: 15px;
-}
-
-/* Button */
-.form-container button{
-    width: 100%;
-    padding: 12px;
-    border: none;
-    background: #00b4d8;
-    color: white;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.form-container button:hover{
-    background: #0077b6;
-    transform: scale(1.04);
-}
-
-/* Links */
-.form-container p{
-    margin-top: 15px;
-    color: #fff;
-    font-size: 14px;
-}
-.form-container a{
-    color: #000000;
-    font-weight: 600;
-    text-decoration: none;
-}
-.form-container a:hover{
-    text-decoration: underline;
-    color: #00b4d8;
-}
-
 /* ===== Responsive ===== */
 @media (max-width: 600px) {
-
     body {
         padding: 20px;
         height: auto;
@@ -143,6 +148,7 @@ body{
         font-size: 14px;
         padding: 10px;
     }
+
     .flash-message {
         font-size: 13px;
         padding: 10px 16px;

@@ -1,10 +1,14 @@
 body {
-    margin: 0;
     font-family: Poppins, sans-serif;
     background: url('https://images.pexels.com/photos/17742072/pexels-photo-17742072.jpeg?auto=compress&cs=tinysrgb&w=1600') no-repeat center center/cover;
     height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Overlay */
 .overlay {
     position: fixed;
     width: 100%;
@@ -15,47 +19,41 @@ body {
     backdrop-filter: blur(5px);
 }
 
+/* Main Form Box */
 .form-container {
-    position: relative;
-    width: 420px;
-    margin: 50px auto;
-    padding: 25px;
     background: rgba(255, 255, 255, 0.12);
+    padding: 25px;
     border-radius: 12px;
+    width: 420px;
     box-shadow: 0 0 20px rgba(0,0,0,0.35);
     backdrop-filter: blur(12px);
     color: rgb(246, 242, 242);
     text-align: center;
 }
 
+/* Form Title */
 .form-container h2 {
     margin-bottom: 18px;
     font-weight: 600;
 }
 
 /* Inputs */
-input {
-    width: 400px;
-    padding: 10px;
-    margin: 6px 0;
+.form-container input,
+.form-container select {
+    width: 95%;
+    padding: 12px;
     border-radius: 6px;
     border: none;
     outline: none;
-}
-select {
-    width: 420px;
-    padding: 10px;
-    margin: 6px 0;
-    border-radius: 6px;
-    border: none;
-    outline: none;
+    margin-bottom: 15px;
+    background: rgb(255, 255, 255);
+    box-sizing: border-box;
 }
 
-/* Update Button */
+/* Button */
 .btn-update {
-    margin-top: 12px;
-    width: 100%;
-    padding: 12px;
+    width: 95%;
+    padding: 15px;
     background: #ffb703;
     border: none;
     border-radius: 6px;
@@ -67,9 +65,9 @@ select {
     background: #e09b02;
 }
 
-/* Back Button */
+/* Back link */
 .back-btn {
-    display: inline-block;
+    display: block;
     margin-top: 12px;
     text-decoration: none;
     color: #fff;
@@ -80,7 +78,7 @@ select {
     color: #00b4d8;
 }
 
-/* Flash Messages */
+/* Flash messages */
 .flash-message {
     position: fixed;
     top: 20px;
@@ -92,32 +90,16 @@ select {
     font-weight: 500;
     animation: fadeInOut 3s ease forwards;
     z-index: 9999;
-    width: auto;
-    text-align: center;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
     color: #fff;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+    text-align: center;
 }
 
-/* Success */
-.flash-success {
-    background-color: #28a745;
-}
-
-/* Error */
-.flash-danger {
-    background-color: #dc3545;
-}
-
-/* Info */
-.flash-info {
-    background-color: #007bff;
-}
-
-/* Warning */
-.flash-warning {
-    background-color: #ffc107;
-    color: #333;
-}
+/* Flash types */
+.flash-success { background-color: #28a745; }
+.flash-danger { background-color: #dc3545; }
+.flash-info { background-color: #007bff; }
+.flash-warning { background-color: #ffc107; color: #333; }
 
 /* Fade Animation */
 @keyframes fadeInOut {
@@ -128,9 +110,14 @@ select {
 }
 
 /* ✅ Mobile Responsive */
-@media (max-width: 480px){
+@media (max-width: 480px) {
     .form-container {
         width: 90%;
         padding: 20px;
+    }
+
+    .form-container input,
+    .form-container select {
+        width: 100%;
     }
 }
